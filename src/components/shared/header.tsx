@@ -27,10 +27,10 @@ export default function Header() {
         <h1 className="text-3xl font-medium text-primary">WHATSAPPBOT</h1>
       </section>
       <nav className="flex items-center gap-10">
-        <a href="#" className="font-light">
+        <a href="#" className="text-text font-light">
           Contacto
         </a>
-        <a href="#" className="font-light">
+        <a href="#" className="text-text font-light">
           Servicios y Precios
         </a>
         <Button>Ingresa</Button>
