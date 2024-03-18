@@ -1,5 +1,5 @@
 import { type ReactNode } from "react";
-import { Anchor } from "./button";
+import { Anchor } from "./anchor";
 import { twMerge } from "tailwind-merge";
 
 interface Props {

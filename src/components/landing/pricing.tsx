@@ -1,7 +1,7 @@
 import { IoLogoWhatsapp } from "react-icons/io";
 import { FaTrophy } from "react-icons/fa";
 
-import { Anchor } from "../shared/button";
+import { Anchor } from "../shared/anchor";
 import { PricingCard } from "../shared/pricingCard";
 
 const ICONS: { [key: string]: JSX.Element } = {

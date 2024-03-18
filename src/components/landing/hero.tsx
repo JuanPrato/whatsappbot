@@ -1,4 +1,4 @@
-import { Anchor } from "../shared/button";
+import { Anchor } from "../shared/anchor";
 import { IoLogoWhatsapp } from "react-icons/io";
 
 export function Hero() {
