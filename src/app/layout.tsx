@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={"h-screen w-screen " + fredoka.className}>
+      <body className={"relative w-screen " + fredoka.className}>
         <Header />
         {children}
       </body>

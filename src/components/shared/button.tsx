@@ -1,16 +1,47 @@
 import type { ReactNode } from "react";
+import type { IconType } from "react-icons";
+import { twMerge } from "tailwind-merge";
+
+type Type = "outline" | "fill";
+type Size = "md" | "lg";
 
 interface Props {
   children?: ReactNode;
-  type?: "outline" | "fill";
+  type?: Type;
+  Icon?: IconType;
+  className?: string;
+  size?: Size;
 }
 
-export function Button({ children, type = "outline" }: Props) {
+const classesTypeMap: { [key: string]: string } = {
+  outline: "border border-opacity-30 text-primary-dark",
+  fill: "bg-primary text-white",
+};
 
-  const className = type === "outline" ? "rounded-lg border border-opacity-30 w-32 py-3 text-center font-semibold text-primary-dark" :
-    "rounded-lg bg-primary w-32 py-3 text-center font-semibold text-white"
+const classesSizeMap: { [key: string]: string } = {
+  md: "min-w-32",
+  lg: "min-w-40 text-lg",
+};
 
+export function Button({
+  children,
+  type = "outline",
+  Icon,
+  className,
+  size = "md",
+}: Props) {
   return (
-    <a href="#" className={className}>{children}</a>
+    <a
+      href="#"
+      className={twMerge(
+        "flex items-center justify-center gap-3 rounded-lg p-3 text-center font-semibold",
+        classesTypeMap[type],
+        classesSizeMap[size],
+        className,
+      )}
+    >
+      {children}
+      {Icon && <Icon size={30} className="text-white" />}
+    </a>
   );
 }

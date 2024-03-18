@@ -1,5 +1,11 @@
+import { Hero } from "@/components/landing/hero";
+import Pricing from "@/components/landing/pricing";
+
 export default function Home() {
   return (
-    <main className="w-full h-full bg-white">MAIN</main>
+    <div>
+      <Hero />
+      <Pricing />
+    </div>
   );
 }

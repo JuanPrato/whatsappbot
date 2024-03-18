@@ -11,6 +11,17 @@ const config: Config = {
       colors: {
         primary: "#2ECC71",
         "primary-dark": "#27AE60",
+        accent: "#E67E22",
+        "accent-dark": "#D35400",
+      },
+      keyframes: {
+        wiggle: {
+          "0%, 100%": { transform: "rotate(-3deg)" },
+          "50%": { transform: "rotate(3deg)" },
+        },
+      },
+      animation: {
+        wiggle: "wiggle .5s ease-in-out infinite",
       },
     },
   },
