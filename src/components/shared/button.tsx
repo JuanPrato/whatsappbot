@@ -11,6 +11,7 @@ interface Props {
   Icon?: IconType;
   className?: string;
   size?: Size;
+  href?: string;
 }
 
 const classesTypeMap: { [key: string]: string } = {
@@ -23,16 +24,17 @@ const classesSizeMap: { [key: string]: string } = {
   lg: "min-w-40 text-lg",
 };
 
-export function Button({
+export function Anchor({
   children,
   type = "outline",
   Icon,
   className,
   size = "md",
+  href,
 }: Props) {
   return (
     <a
-      href="#"
+      href={href || "#"}
       className={twMerge(
         "flex items-center justify-center gap-3 rounded-lg p-3 text-center font-semibold",
         classesTypeMap[type],

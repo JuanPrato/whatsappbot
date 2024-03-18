@@ -1,4 +1,4 @@
-import { Button } from "../shared/button";
+import { Anchor } from "../shared/button";
 import { IoLogoWhatsapp } from "react-icons/io";
 
 export function Hero() {
@@ -12,14 +12,14 @@ export function Hero() {
           Simplifica la reserva de tus servicios con solo unos pocos mensajes de
           WhatsApp. Sin llamadas, sin esperas.
         </p>
-        <Button
+        <Anchor
           type="fill"
           Icon={IoLogoWhatsapp}
           size="lg"
           className="bg-accent hover:animate-wiggle"
         >
           Contáctenos
-        </Button>
+        </Anchor>
       </section>
       <img className="h-full w-full" src="./HERO.png" alt="hero image" />
     </main>

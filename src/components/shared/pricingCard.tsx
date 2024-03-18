@@ -1,5 +1,5 @@
 import { type ReactNode } from "react";
-import { Button } from "./button";
+import { Anchor } from "./button";
 import { twMerge } from "tailwind-merge";
 
 interface Props {
@@ -50,14 +50,14 @@ export function PricingCard({
           theme === "dark" ? "borer-text-neg" : "border-text",
         )}
       >
-        <Button
+        <Anchor
           type="fill"
           className={
             theme === "dark" ? "bg-text-neg text-text" : "bg-text text-text-neg"
           }
         >
           Comenzar ahora
-        </Button>
+        </Anchor>
       </footer>
     </div>
   );

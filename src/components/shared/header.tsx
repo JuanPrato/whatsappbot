@@ -1,7 +1,7 @@
 "use client";
 
 import { twMerge } from "tailwind-merge";
-import { Button } from "./button";
+import { Anchor } from "./button";
 import { useEffect, useRef } from "react";
 import useScroll from "@/hooks/useScroll";
 
@@ -33,8 +33,8 @@ export default function Header() {
         <a href="#" className="text-text font-light">
           Servicios y Precios
         </a>
-        <Button>Ingresa</Button>
-        <Button type="fill">Regístrate</Button>
+        <Anchor>Ingresa</Anchor>
+        <Anchor type="fill">Regístrate</Anchor>
       </nav>
     </header>
   );
