@@ -1,17 +1,27 @@
+import { twMerge } from "tailwind-merge";
+
 interface CommonProps {
   label: string;
+  dark?: boolean;
 }
 
-const labelClassName = "text-text-neg text-lg font-light";
-const inputClassName = "bg-text-neg rounded-lg w-full min-h-10";
+const labelClassName = (dark?: boolean) =>
+  twMerge(dark ? "text-text-neg" : "text-text", "text-lg font-light");
+const inputClassName = (dark?: boolean) =>
+  twMerge(
+    dark
+      ? "bg-text-neg"
+      : "bg-transparent border border-text border-opacity-30",
+    "rounded-lg w-full min-h-10",
+  );
 
 export function EmailInput(props: CommonProps) {
   return (
     <div className="w-full">
-      <label htmlFor="mail" className={labelClassName}>
+      <label htmlFor="mail" className={labelClassName(props.dark)}>
         {props.label}
       </label>
-      <input type="email" name="mail" className={inputClassName} />
+      <input type="email" name="mail" className={inputClassName(props.dark)} />
     </div>
   );
 }
@@ -19,10 +29,14 @@ export function EmailInput(props: CommonProps) {
 export function PasswordInput(props: CommonProps) {
   return (
     <div className="w-full">
-      <label htmlFor="password" className={labelClassName}>
+      <label htmlFor="password" className={labelClassName(props.dark)}>
         {props.label}
       </label>
-      <input type="password" name="password" className={inputClassName} />
+      <input
+        type="password"
+        name="password"
+        className={inputClassName(props.dark)}
+      />
     </div>
   );
 }
