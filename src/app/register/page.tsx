@@ -27,7 +27,7 @@ export default function RegisterPage() {
             <PasswordInput label="Contraseña" />
             <PhoneInput label="Teléfono" />
           </div>
-          <ButtonInput label="Registrarme" />
+          <ButtonInput label="Registrarme" type="submit" />
         </form>
       </div>
     </section>

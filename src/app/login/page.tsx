@@ -14,7 +14,7 @@ export default function LoginPage() {
         <form className="flex w-full flex-col gap-5">
           <EmailInput label="Email" dark />
           <PasswordInput label="Contraseña" dark />
-          <ButtonInput label="Ingresar" dark />
+          <ButtonInput label="Ingresar" type="submit" dark />
         </form>
       </div>
       <div className="flex w-full justify-center overflow-hidden">
