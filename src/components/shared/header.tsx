@@ -30,7 +30,7 @@ export default function Header() {
         </section>
       </Link>
       <nav className="flex items-center gap-10">
-        <Link href="/#contact" className="font-light text-text">
+        <Link href="/" className="font-light text-text">
           Contacto
         </Link>
         <Link href="/#pricing" className="font-light text-text">

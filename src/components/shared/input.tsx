@@ -12,7 +12,7 @@ const inputClassName = (dark?: boolean) =>
     dark
       ? "bg-text-neg"
       : "bg-transparent border border-text border-opacity-30",
-    "rounded-lg w-full min-h-10",
+    "rounded-lg w-full min-h-10 p-2",
   );
 
 export function EmailInput(props: CommonProps) {
