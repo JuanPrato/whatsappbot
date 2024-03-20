@@ -68,7 +68,7 @@ type ButtonProps = CommonProps & {
 };
 
 const buttonClassName =
-  "bg-primary text-center w-full p-3 rounded-lg text-text";
+  "bg-primary text-center w-full p-3 rounded-lg text-text cursor-pointer hover:bg-opacity-80";
 
 export function ButtonInput(props: ButtonProps) {
   return (
