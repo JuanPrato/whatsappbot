@@ -26,6 +26,28 @@ export function EmailInput(props: CommonProps) {
   );
 }
 
+export function TextInput(props: CommonProps) {
+  return (
+    <div className="w-full">
+      <label htmlFor="text" className={labelClassName(props.dark)}>
+        {props.label}
+      </label>
+      <input type="text" name="text" className={inputClassName(props.dark)} />
+    </div>
+  );
+}
+
+export function PhoneInput(props: CommonProps) {
+  return (
+    <div className="w-full">
+      <label htmlFor="phone" className={labelClassName(props.dark)}>
+        {props.label}
+      </label>
+      <input type="tel" name="phone" className={inputClassName(props.dark)} />
+    </div>
+  );
+}
+
 export function PasswordInput(props: CommonProps) {
   return (
     <div className="w-full">

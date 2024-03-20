@@ -30,14 +30,16 @@ export default function Header() {
         </section>
       </Link>
       <nav className="flex items-center gap-10">
-        <Link href="/#contact" className="text-text font-light">
+        <Link href="/#contact" className="font-light text-text">
           Contacto
         </Link>
-        <Link href="/#pricing" className="text-text font-light">
+        <Link href="/#pricing" className="font-light text-text">
           Servicios y Precios
         </Link>
         <Anchor href="/login">Ingresa</Anchor>
-        <Anchor type="fill">Regístrate</Anchor>
+        <Anchor type="fill" href="/register">
+          Regístrate
+        </Anchor>
       </nav>
     </header>
   );
