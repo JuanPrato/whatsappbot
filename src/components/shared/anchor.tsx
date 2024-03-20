@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { ReactNode } from "react";
 import type { IconType } from "react-icons";
 import { twMerge } from "tailwind-merge";
@@ -33,7 +34,7 @@ export function Anchor({
   href,
 }: Props) {
   return (
-    <a
+    <Link
       href={href || "#"}
       className={twMerge(
         "flex items-center justify-center gap-3 rounded-lg p-3 text-center font-semibold",
@@ -44,6 +45,6 @@ export function Anchor({
     >
       {children}
       {Icon && <Icon size={30} className="text-white" />}
-    </a>
+    </Link>
   );
 }

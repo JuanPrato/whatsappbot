@@ -39,7 +39,10 @@ const PRICING_DATA = [
 
 export default function Pricing() {
   return (
-    <section className="flex h-[calc(100vh-7rem)] w-full flex-col items-center justify-center gap-8 overflow-hidden bg-primary px-[15%]">
+    <section
+      className="flex h-[calc(100vh-7rem)] w-full flex-col items-center justify-center gap-8 overflow-hidden bg-primary px-[15%]"
+      id="pricing"
+    >
       <div className="text-center">
         <h2 className="text-4xl">La solución más simple a tu negocio</h2>
         <h4 className="text-2xl font-light">Elegí solo lo que necesites</h4>
