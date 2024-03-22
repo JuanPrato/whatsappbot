@@ -12,6 +12,6 @@ export default function Header() {
   return PUBLIC_ROUTES.some((r) => r.endsWith(pathname || "-")) ? (
     <UnAuthHeader />
   ) : (
-    <AuthHeader />
+    <AuthHeader route={pathname} />
   );
 }
