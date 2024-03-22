@@ -1,12 +1,12 @@
 "use client";
 
 import { twMerge } from "tailwind-merge";
-import { Anchor } from "./anchor";
+import { Anchor } from "../anchor";
 import { useEffect, useRef } from "react";
 import useScroll from "@/hooks/useScroll";
 import Link from "next/link";
 
-export default function Header() {
+export default function UnAuthHeader() {
   const header = useRef<HTMLHeadElement>(null);
 
   const scroll = useScroll();

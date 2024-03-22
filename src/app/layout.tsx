@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Fredoka } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/shared/header";
+import Header from "@/components/shared/header/header";
 
 const fredoka = Fredoka({ subsets: ["latin"] });
 
@@ -17,7 +17,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={"relative w-screen scroll-smooth " + fredoka.className}>
+      <body
+        className={
+          "relative m-auto w-screen max-w-[1920px] scroll-smooth " +
+          fredoka.className
+        }
+      >
         <Header />
         {children}
       </body>

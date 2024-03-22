@@ -17,10 +17,10 @@ export default function RegisterPage() {
         />
       </div>
       <div className="flex w-full flex-col items-start justify-center gap-5">
-        <h2 className="text-3xl font-medium text-text">
+        <h2 className="max-w-[500px] text-3xl font-medium text-text">
           Crea tu cuenta y comienza a automatizar
         </h2>
-        <form className="flex w-full flex-col gap-5">
+        <form className="flex w-full max-w-[500px] flex-col gap-5">
           <TextInput label="Nombre completo" />
           <EmailInput label="Email" />
           <div className="flex w-full gap-5">
