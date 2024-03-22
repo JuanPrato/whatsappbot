@@ -35,6 +35,9 @@ const config: Config = {
         wiggle: "wiggle .5s ease-in-out infinite",
         outline: "outline .5s ease-in-out infinite",
       },
+      boxShadow: {
+        standard: `2px 4px 4px 0px rgba(0,0,0,0.25)`,
+      },
     },
   },
   plugins: [],
