@@ -77,17 +77,15 @@ type ButtonProps = CommonProps & {
 };
 
 const buttonClassName =
-  "bg-primary text-center w-full p-3 rounded-lg text-text cursor-pointer hover:bg-opacity-80";
+  "bg-primary text-center p-3 rounded-lg text-text cursor-pointer hover:bg-opacity-80";
 
 export function ButtonInput(props: ButtonProps) {
   return (
-    <div className="w-full">
-      <input
-        type={props.type || "button"}
-        name="password"
-        className={buttonClassName}
-        value={props.label}
-      />
-    </div>
+    <input
+      type={props.type || "button"}
+      name="button"
+      className={twMerge(buttonClassName, props.inputClassName)}
+      value={props.label}
+    />
   );
 }
