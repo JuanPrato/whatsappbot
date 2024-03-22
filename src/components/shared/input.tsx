@@ -1,8 +1,10 @@
 import { twMerge } from "tailwind-merge";
 
 interface CommonProps {
-  label: string;
+  label?: string;
   dark?: boolean;
+  placeholder?: string;
+  inputClassName?: string;
 }
 
 const labelClassName = (dark?: boolean) =>
@@ -29,10 +31,17 @@ export function EmailInput(props: CommonProps) {
 export function TextInput(props: CommonProps) {
   return (
     <div className="w-full">
-      <label htmlFor="text" className={labelClassName(props.dark)}>
-        {props.label}
-      </label>
-      <input type="text" name="text" className={inputClassName(props.dark)} />
+      {props.label && (
+        <label htmlFor="text" className={labelClassName(props.dark)}>
+          {props.label}
+        </label>
+      )}
+      <input
+        type="text"
+        name="text"
+        placeholder={props.placeholder}
+        className={twMerge(inputClassName(props.dark), props.inputClassName)}
+      />
     </div>
   );
 }
