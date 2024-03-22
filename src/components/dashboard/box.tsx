@@ -11,7 +11,9 @@ export function Box({ title, children }: Props) {
       <header>
         <h3 className="text-2xl font-medium">{title}</h3>
       </header>
-      <div className="rounded-lg bg-text p-5">{children}</div>
+      <div className="flex flex-col gap-3 rounded-lg bg-text p-5">
+        {children}
+      </div>
     </div>
   );
 }
