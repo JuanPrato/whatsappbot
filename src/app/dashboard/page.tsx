@@ -1,6 +1,6 @@
-import { Box } from "@/components/dashboard/box";
-import { ButtonInput, TextInput } from "@/components/shared/input";
+import { ButtonInput } from "@/components/shared/input";
 import { PowerButton } from "@/components/shared/powerButton";
+import UserStatistics from "@/components/dashboard/userStatistics";
 
 export default function DashBoardPage() {
   return (
@@ -9,25 +9,7 @@ export default function DashBoardPage() {
         <h1 className="text-5xl">Información y gestión de tu bot</h1>
         <PowerButton />
       </header>
-      <section>
-        <div className="grid grid-cols-2 gap-16">
-          <Box title="Define el mensaje de bienvenida">
-            <TextInput
-              placeholder="Bienvenido a la tienda virtual"
-              inputClassName="bg-light"
-            />
-            <ButtonInput
-              label="Guardar"
-              inputClassName="text-light font-semibold w-"
-            />
-          </Box>
-          <Box title="Datos sobre el ultimo mes">
-            <h3 className="text-light">🗣️ Interacciones</h3>
-            <h3 className="text-light">🚩 Conversaciones</h3>
-            <h3 className="text-light">🐎 Reencuentros</h3>
-          </Box>
-        </div>
-      </section>
+      <UserStatistics />
       <section>
         <header className="flex w-full items-center justify-between">
           <h2 className="text-2xl font-medium">Menú</h2>
