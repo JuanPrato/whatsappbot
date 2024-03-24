@@ -3,7 +3,7 @@ import { PiTableFill } from "react-icons/pi";
 import { RxAvatar } from "react-icons/rx";
 import { FaImages } from "react-icons/fa";
 import { HeaderIcon } from "./HeaderIcon";
-import { logout } from "@/auth/lib";
+import { logout } from "@/common/auth/lib";
 import { redirect } from "next/navigation";
 
 export default function AuthHeader({ route }: { route: string }) {

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { updateSession } from "./auth/lib";
+import { updateSession } from "./common/auth/lib";
 import { PUBLIC_ROUTES } from "./common/constants";
 
 export async function middleware(request: NextRequest) {

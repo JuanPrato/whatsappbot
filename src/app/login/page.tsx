@@ -1,4 +1,4 @@
-import { login } from "@/auth/lib";
+import { login } from "@/common/auth/lib";
 import {
   ButtonInput,
   EmailInput,
