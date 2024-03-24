@@ -1,7 +1,7 @@
-import { ButtonInput, TextInput } from "@/components/shared/input";
+import { ButtonInput } from "@/components/shared/input";
 import { PowerButton } from "@/components/shared/powerButton";
 import UserStatistics from "@/components/dashboard/userStatistics";
-import { Box } from "@/components/dashboard/box";
+import WelcomeMessage from "@/components/dashboard/welcomeMessage";
 
 export default function DashBoardPage() {
   return (
@@ -12,16 +12,7 @@ export default function DashBoardPage() {
       </header>
       <section>
         <div className="grid grid-cols-2 gap-16">
-          <Box title="Define el mensaje de bienvenida">
-            <TextInput
-              placeholder="Bienvenido a la tienda virtual"
-              inputClassName="bg-light"
-            />
-            <ButtonInput
-              label="Guardar"
-              inputClassName="text-light font-semibold w-"
-            />
-          </Box>
+          <WelcomeMessage />
           <UserStatistics />
         </div>
       </section>
