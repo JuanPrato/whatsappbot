@@ -11,6 +11,8 @@ export async function middleware(request: NextRequest) {
   if (isUnProtectedRoute) return res;
 
   if (!res) return Response.redirect(new URL("/login", request.url));
+
+  return res;
 }
 
 export const config = {
