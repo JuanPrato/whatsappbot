@@ -3,8 +3,7 @@
 import UnAuthHeader from "./unAuthHeader";
 import AuthHeader from "./authHeader";
 import { usePathname } from "next/navigation";
-
-const PUBLIC_ROUTES = ["/", "/login", "/register"];
+import { PUBLIC_ROUTES } from "@/common/constants";
 
 export default function Header() {
   const pathname = usePathname();

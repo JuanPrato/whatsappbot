@@ -3,10 +3,12 @@ import { PiTableFill } from "react-icons/pi";
 import { RxAvatar } from "react-icons/rx";
 import { FaImages } from "react-icons/fa";
 import { HeaderIcon } from "./HeaderIcon";
+import { logout } from "@/auth/lib";
+import { redirect } from "next/navigation";
 
 export default function AuthHeader({ route }: { route: string }) {
   return (
-    <header className="shadow-standard absolute left-0 top-0 flex h-screen w-28 flex-col items-center bg-light p-3">
+    <header className="absolute left-0 top-0 flex h-screen w-28 flex-col items-center bg-light p-3 shadow-standard">
       <div className="w-24 border-b border-text border-opacity-30 pb-3">
         <img src="/LOGO.png" alt="logo" />
       </div>
@@ -19,7 +21,17 @@ export default function AuthHeader({ route }: { route: string }) {
           <HeaderIcon Icon={PiTableFill} />
           <HeaderIcon Icon={FaImages} />
         </div>
-        <HeaderIcon Icon={RxAvatar} />
+        <HeaderIcon
+          Icon={RxAvatar}
+          as={"button"}
+          properties={{
+            onClick: async () => {
+              "use server";
+              await logout();
+              redirect("/");
+            },
+          }}
+        />
       </div>
     </header>
   );

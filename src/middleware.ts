@@ -1,11 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
 import { updateSession } from "./auth/lib";
-
-const UNPROTECTED_ROUTES = ["/", "/login", "register"];
+import { PUBLIC_ROUTES } from "./common/constants";
 
 export async function middleware(request: NextRequest) {
   const res = await updateSession(request);
-  const isUnProtectedRoute = UNPROTECTED_ROUTES.some((route) =>
+  const isUnProtectedRoute = PUBLIC_ROUTES.some((route) =>
     request.nextUrl.pathname.startsWith(route),
   );
 
