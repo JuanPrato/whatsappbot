@@ -5,6 +5,8 @@ interface CommonProps {
   dark?: boolean;
   placeholder?: string;
   inputClassName?: string;
+  name?: string;
+  boxClassName?: string;
 }
 
 const labelClassName = (dark?: boolean) =>
@@ -30,15 +32,38 @@ export function EmailInput(props: CommonProps) {
 
 export function TextInput(props: CommonProps) {
   return (
-    <div className="w-full">
+    <div className={twMerge("w-full", props.boxClassName)}>
       {props.label && (
-        <label htmlFor="text" className={labelClassName(props.dark)}>
+        <label
+          htmlFor={props.name || "text"}
+          className={labelClassName(props.dark)}
+        >
           {props.label}
         </label>
       )}
       <input
         type="text"
-        name="text"
+        name={props.name || "text"}
+        placeholder={props.placeholder}
+        className={twMerge(inputClassName(props.dark), props.inputClassName)}
+      />
+    </div>
+  );
+}
+
+export function TextAreaInput(props: CommonProps) {
+  return (
+    <div className={twMerge("w-full", props.boxClassName)}>
+      {props.label && (
+        <label
+          htmlFor={props.name || "text"}
+          className={labelClassName(props.dark)}
+        >
+          {props.label}
+        </label>
+      )}
+      <textarea
+        name={props.name || "text"}
         placeholder={props.placeholder}
         className={twMerge(inputClassName(props.dark), props.inputClassName)}
       />
