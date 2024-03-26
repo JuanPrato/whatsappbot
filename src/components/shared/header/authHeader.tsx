@@ -4,6 +4,7 @@ import { RxAvatar } from "react-icons/rx";
 import { FaImages } from "react-icons/fa";
 import { HeaderIcon } from "./HeaderIcon";
 import { logoutAction } from "@/common/auth/actions";
+import Link from "next/link";
 
 export default function AuthHeader({ route }: { route: string }) {
   return (
@@ -16,9 +17,21 @@ export default function AuthHeader({ route }: { route: string }) {
           <HeaderIcon
             Icon={RiRobot2Fill}
             isActive={route.includes("dashboard")}
+            as={Link}
+            properties={{ href: "/dashboard" }}
           />
-          <HeaderIcon Icon={PiTableFill} />
-          <HeaderIcon Icon={FaImages} />
+          <HeaderIcon
+            Icon={PiTableFill}
+            isActive={route.includes("data")}
+            as={Link}
+            properties={{ href: "/dashboard" }}
+          />
+          <HeaderIcon
+            Icon={FaImages}
+            isActive={route.includes("images")}
+            as={Link}
+            properties={{ href: "/images" }}
+          />
         </div>
         <HeaderIcon
           Icon={RxAvatar}
