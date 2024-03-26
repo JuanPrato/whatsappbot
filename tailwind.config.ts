@@ -16,6 +16,7 @@ const config: Config = {
         text: "#202C38",
         "text-neg": "#ECF0F1",
         light: "#ECF0F1",
+        dark: "#202C38",
       },
       keyframes: {
         wiggle: {
