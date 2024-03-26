@@ -1,5 +1,6 @@
 import { MenuItem } from "@/common/types";
 import { ButtonInput } from "../shared/input";
+import { EditMenuItemModal } from "./editMenuItemModal";
 
 interface Props {
   item: MenuItem;
@@ -18,10 +19,7 @@ export default function MenuItemCard({ item }: Props) {
         </p>
       </div>
       <footer className="flex justify-between py-1">
-        <ButtonInput
-          label="Editar"
-          inputClassName="min-w-[200px] bg-yellow-500"
-        />
+        <EditMenuItemModal item={item} />
         <ButtonInput
           label="Eliminar"
           inputClassName="min-w-[200px] bg-red-500 text-light"

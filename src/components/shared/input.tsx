@@ -7,6 +7,7 @@ interface CommonProps {
   inputClassName?: string;
   name?: string;
   boxClassName?: string;
+  value?: string;
 }
 
 const labelClassName = (dark?: boolean) =>
@@ -46,6 +47,7 @@ export function TextInput(props: CommonProps) {
         name={props.name || "text"}
         placeholder={props.placeholder}
         className={twMerge(inputClassName(props.dark), props.inputClassName)}
+        value={props.value}
       />
     </div>
   );
@@ -66,6 +68,7 @@ export function TextAreaInput(props: CommonProps) {
         name={props.name || "text"}
         placeholder={props.placeholder}
         className={twMerge(inputClassName(props.dark), props.inputClassName)}
+        value={props.value}
       />
     </div>
   );
