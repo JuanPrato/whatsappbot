@@ -99,6 +99,7 @@ export function PasswordInput(props: CommonProps) {
 
 type ButtonProps = CommonProps & {
   type?: "button" | "submit";
+  onClick?: () => void;
 };
 
 const buttonClassName =
@@ -111,6 +112,7 @@ export function ButtonInput(props: ButtonProps) {
       name="button"
       className={twMerge(buttonClassName, props.inputClassName)}
       value={props.label}
+      onClick={props.onClick}
     />
   );
 }
