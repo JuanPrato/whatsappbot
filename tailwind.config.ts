@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import colors from "tailwindcss/colors";
 
 const config: Config = {
   content: [
@@ -17,6 +18,7 @@ const config: Config = {
         "text-neg": "#ECF0F1",
         light: "#ECF0F1",
         dark: "#202C38",
+        danger: colors["red"]["500"],
       },
       keyframes: {
         wiggle: {
