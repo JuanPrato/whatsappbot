@@ -30,6 +30,7 @@ export interface Message {
 }
 
 export interface Command {
+  id: number;
   title: string;
   reply: string;
   images: Image[];
