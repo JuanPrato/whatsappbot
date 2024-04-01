@@ -1,9 +1,3 @@
-export type MenuItem = {
-  id: string;
-  title: string;
-  reply: string;
-};
-
 export interface IncomingMessage {
   SmsMessageSid: string;
   NumMedia: string;

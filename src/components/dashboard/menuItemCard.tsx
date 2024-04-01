@@ -1,14 +1,14 @@
-import { MenuItem } from "@/common/types";
+import { Command } from "@/common/types";
 import { ButtonInput } from "../shared/input";
 import { EditMenuItemModal } from "./editMenuItemModal";
 
 interface Props {
-  item: MenuItem;
+  item: Command;
 }
 
 export default function MenuItemCard({ item }: Props) {
   return (
-    <div key={item.id} className="bg-dark flex flex-col rounded-lg p-5">
+    <div key={item.id} className="flex flex-col rounded-lg bg-dark p-5">
       <header>
         <h3 className="text-xl font-medium text-light">{item.title}</h3>
       </header>

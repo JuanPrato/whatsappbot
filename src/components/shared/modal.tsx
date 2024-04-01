@@ -31,7 +31,7 @@ export default function Modal({ children, open, onCancel }: Props) {
     <dialog
       ref={ref}
       className={twMerge(
-        "grid place-content-center bg-[rgba(0,0,0,.3)]",
+        "grid place-content-center backdrop:bg-[rgba(0,0,0,.7)]",
         !open && "hidden",
       )}
       onClick={onClick}
