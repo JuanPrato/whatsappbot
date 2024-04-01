@@ -1,6 +1,6 @@
-import { db } from "../db";
+import { db } from "@/db";
 import { eq } from "drizzle-orm";
-import { user as userTable } from "../db/schema";
+import { user as userTable } from "@/db/schema";
 import { Command } from "@/common/types";
 
 type DBUser = {
