@@ -1,7 +1,8 @@
 import { db } from "@/db";
-import { eq } from "drizzle-orm";
-import { user as userTable } from "@/db/schema";
-import { Command } from "@/common/types";
+import { desc, eq } from "drizzle-orm";
+import { image, user as userTable } from "@/db/schema";
+import { Command, Image } from "@/common/types";
+import dayjs from "dayjs";
 
 type DBUser = {
   phone: string;
@@ -33,7 +34,11 @@ export class Bot {
       id: item.id,
       title: item.title,
       reply: item.reply,
-      images: item.images.map((i) => ({ url: i.image.url })),
+      images: item.images.map((i) => ({
+        id: i.image.id,
+        description: "Imagen",
+        url: i.image.url,
+      })),
     }));
     this.welcomeMessage = dbUser.welcomeMessage;
   }
@@ -73,5 +78,42 @@ export class Bot {
     if (!dbUser) return null;
 
     return new Bot(dbUser);
+  }
+
+  static async getBotImagesGroupByDay(phone: string) {
+    const images = await db.query.image.findMany({
+      where: eq(image.phone, phone),
+      orderBy: desc(image.timestamp),
+    });
+
+    const result: { date: Date; pictures: Image[] }[] = [];
+
+    images.forEach((image) => {
+      const day = dayjs(image.timestamp).startOf("day");
+
+      const res = result.at(-1);
+
+      if (!res || res.date.getTime() !== day.toDate().getTime()) {
+        result.push({
+          date: day.toDate(),
+          pictures: [
+            {
+              id: image.id,
+              description: "Imagen",
+              url: image.url,
+            },
+          ],
+        });
+        return;
+      }
+
+      res.pictures.push({
+        id: image.id,
+        description: "Imagen",
+        url: image.url,
+      });
+    });
+
+    return result;
   }
 }
