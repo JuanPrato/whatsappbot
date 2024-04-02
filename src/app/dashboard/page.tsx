@@ -19,7 +19,10 @@ export default async function DashBoardPage() {
       />
       <section>
         <div className="grid grid-cols-2 gap-16">
-          <WelcomeMessage welcomeMessage={bot.welcomeMessage} />
+          <WelcomeMessage
+            welcomeMessage={bot.welcomeMessage}
+            phone={bot.phone}
+          />
           <UserStatistics />
         </div>
       </section>
