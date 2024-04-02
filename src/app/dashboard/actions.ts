@@ -1,7 +1,7 @@
 "use server";
 
 import { db } from "@/db";
-import { user } from "@/db/schema";
+import { menuItem, user } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 
@@ -20,5 +20,35 @@ export async function updateWelcomeMessage(_: any, formData: FormData) {
 
   return {
     result: "success",
+  };
+}
+
+export async function updateMenuItem(_: any, formData: FormData) {
+  const id = Number(formData.get("id")) as number;
+  const title = formData.get("title") as string | null;
+  const reply = formData.get("reply") as string | null;
+
+  if (!title) {
+    return {
+      errors: {
+        title: "Debe ingresar un titulo",
+      },
+    };
+  }
+
+  if (!reply) {
+    return {
+      errors: {
+        reply: "Debe ingresar una respuesta",
+      },
+    };
+  }
+
+  await db.update(menuItem).set({ title, reply }).where(eq(menuItem.id, id));
+
+  revalidatePath("/dashboard");
+
+  return {
+    success: true,
   };
 }
