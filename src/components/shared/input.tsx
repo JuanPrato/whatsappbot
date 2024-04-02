@@ -47,7 +47,9 @@ export function TextInput(props: CommonProps) {
         name={props.name || "text"}
         placeholder={props.placeholder}
         className={twMerge(inputClassName(props.dark), props.inputClassName)}
-        value={props.value}
+        //value={props.value}
+        defaultValue={props.value}
+        //onChange={() => {}}
       />
     </div>
   );
@@ -69,6 +71,7 @@ export function TextAreaInput(props: CommonProps) {
         placeholder={props.placeholder}
         className={twMerge(inputClassName(props.dark), props.inputClassName)}
         value={props.value}
+        //onChange={() => {}}
       />
     </div>
   );
