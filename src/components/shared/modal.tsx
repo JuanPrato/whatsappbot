@@ -26,7 +26,6 @@ export default function Modal({ children, open, onCancel }: Props) {
       ref.current.close();
     }
   };
-  console.log(open);
   return (
     <dialog
       ref={ref}
