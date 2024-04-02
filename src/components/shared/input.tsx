@@ -7,7 +7,7 @@ interface CommonProps {
   inputClassName?: string;
   name?: string;
   boxClassName?: string;
-  value?: string;
+  value?: string | number;
   error?: string;
   success?: string;
 }
