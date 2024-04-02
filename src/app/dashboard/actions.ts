@@ -30,6 +30,7 @@ export async function updateMenuItem(_: any, formData: FormData) {
 
   if (!title) {
     return {
+      success: false,
       errors: {
         title: "Debe ingresar un titulo",
       },
@@ -38,6 +39,7 @@ export async function updateMenuItem(_: any, formData: FormData) {
 
   if (!reply) {
     return {
+      success: false,
       errors: {
         reply: "Debe ingresar una respuesta",
       },
