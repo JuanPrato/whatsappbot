@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   TextInput,
   TextAreaInput,
@@ -18,6 +18,7 @@ interface Props {
 
 export function EditMenuItemModal({ item }: Props) {
   const [open, setOpen] = useState(false);
+  const formRef = useRef<HTMLFormElement>(null);
   const [state, formAction] = useFormState(updateMenuItem, null);
 
   useEffect(() => {
@@ -37,11 +38,13 @@ export function EditMenuItemModal({ item }: Props) {
         open={open}
         onCancel={() => {
           setOpen(false);
+          formRef.current?.reset();
         }}
       >
         <form
           action={formAction}
           className="min-w-[350px] rounded-lg bg-light p-5"
+          ref={formRef}
         >
           <TextInput
             placeholder="Title"
