@@ -12,7 +12,7 @@ export function UserCategoryHeader(props: Props) {
       <h1 className="text-5xl">
         {props.title}
         <span className="ml-2 text-2xl text-text text-opacity-90">
-          ({props.phone})
+          {props.phone && `(${props.phone})`}
         </span>
       </h1>
       {props.icon && <props.icon />}
