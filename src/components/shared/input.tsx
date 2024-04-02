@@ -77,10 +77,15 @@ export function TextAreaInput(props: CommonProps) {
       <textarea
         name={props.name || "text"}
         placeholder={props.placeholder}
-        className={twMerge(inputClassName(props.dark), props.inputClassName)}
+        className={twMerge(
+          inputClassName(props.dark),
+          props.inputClassName,
+          props.error && "ring-1 ring-danger",
+        )}
         value={props.value}
         //onChange={() => {}}
       />
+      <h4 className="text-sm text-light">{props.error}</h4>
     </div>
   );
 }
