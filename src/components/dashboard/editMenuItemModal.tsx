@@ -1,16 +1,30 @@
 "use client";
 
-import { useState } from "react";
-import { TextInput, TextAreaInput, ButtonInput } from "../shared/input";
+import { useEffect, useState } from "react";
+import {
+  TextInput,
+  TextAreaInput,
+  ButtonInput,
+  HiddenInput,
+} from "../shared/input";
 import Modal from "../shared/modal";
-import { MenuItem } from "@/common/types";
+import { Command } from "@/common/types";
+import { useFormState, useFormStatus } from "react-dom";
+import { updateMenuItem } from "@/app/dashboard/actions";
 
 interface Props {
-  item: MenuItem;
+  item: Command;
 }
 
 export function EditMenuItemModal({ item }: Props) {
   const [open, setOpen] = useState(false);
+  const [state, formAction] = useFormState(updateMenuItem, null);
+
+  useEffect(() => {
+    if (state?.success) {
+      setOpen(false);
+    }
+  }, [state]);
 
   return (
     <>
@@ -25,21 +39,35 @@ export function EditMenuItemModal({ item }: Props) {
           setOpen(false);
         }}
       >
-        <form action="" className="min-w-[350px] rounded-lg bg-light p-5">
+        <form
+          action={formAction}
+          className="min-w-[350px] rounded-lg bg-light p-5"
+        >
           <TextInput
             placeholder="Title"
             //boxClassName="border-b border-dark py-1"
             inputClassName="border-t-0 border-x-0 rounded-none outline-none border-b borde-dark"
             value={item.title}
+            error={state?.errors?.title}
+            name="title"
+            errorClassName="text-dark"
           />
-          <div className="border-dark h-[150px] border-b border-opacity-30"></div>
+          <div className="h-[150px] border-b border-dark border-opacity-30"></div>
           <TextAreaInput
             label="Respuesta"
             inputClassName="min-h-[150px]"
             boxClassName="border-dark border-b border-opacity-30"
             value={item.reply}
+            error={state?.errors?.reply}
+            name="reply"
+            errorClassName="text-dark"
           />
-          <ButtonInput label="Guardar" inputClassName="w-full my-1" />
+          <HiddenInput value={item.id} name="id" />
+          <ButtonInput
+            label="Guardar"
+            type="submit"
+            inputClassName="w-full my-1"
+          />
         </form>
       </Modal>
     </>
