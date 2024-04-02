@@ -10,6 +10,7 @@ interface CommonProps {
   value?: string | number;
   error?: string;
   success?: string;
+  errorClassName?: string;
 }
 
 const labelClassName = (dark?: boolean) =>
@@ -82,10 +83,12 @@ export function TextAreaInput(props: CommonProps) {
           props.inputClassName,
           props.error && "ring-1 ring-danger",
         )}
-        value={props.value}
+        defaultValue={props.value}
         //onChange={() => {}}
       />
-      <h4 className="text-sm text-light">{props.error}</h4>
+      <h4 className={twMerge("text-sm text-light", props.errorClassName)}>
+        {props.error}
+      </h4>
     </div>
   );
 }
