@@ -59,7 +59,9 @@ export function TextInput(props: CommonProps) {
         defaultValue={props.value}
         //onChange={() => {}}
       />
-      <h4 className="text-sm text-light">{props.error}</h4>
+      <h4 className={twMerge("text-sm text-light", props.errorClassName)}>
+        {props.error}
+      </h4>
     </div>
   );
 }
