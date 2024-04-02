@@ -8,6 +8,8 @@ interface CommonProps {
   name?: string;
   boxClassName?: string;
   value?: string;
+  error?: string;
+  success?: string;
 }
 
 const labelClassName = (dark?: boolean) =>
@@ -46,11 +48,17 @@ export function TextInput(props: CommonProps) {
         type="text"
         name={props.name || "text"}
         placeholder={props.placeholder}
-        className={twMerge(inputClassName(props.dark), props.inputClassName)}
+        className={twMerge(
+          inputClassName(props.dark),
+          props.inputClassName,
+          props.error && "ring-1 ring-danger",
+          props.success && "ring-1 ring-primary",
+        )}
         //value={props.value}
         defaultValue={props.value}
         //onChange={() => {}}
       />
+      <h4 className="text-sm text-light">{props.error}</h4>
     </div>
   );
 }
@@ -121,4 +129,8 @@ export function ButtonInput(props: ButtonProps) {
       onClick={props.onClick}
     />
   );
+}
+
+export function HiddenInput(props: CommonProps) {
+  return <input defaultValue={props.value} name={props.name} type="hidden" />;
 }
