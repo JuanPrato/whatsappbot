@@ -22,6 +22,9 @@ export const image = sqliteTable("image", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   url: text("url").notNull(),
   phone: text("phone").notNull(),
+  timestamp: integer("timestamp", { mode: "timestamp" })
+    .notNull()
+    .default(sql`(strftime('%s', 'now'))`),
 });
 
 export const menuItemImages = sqliteTable(
@@ -32,7 +35,7 @@ export const menuItemImages = sqliteTable(
   },
   (t) => ({
     pk: primaryKey({ columns: [t.menuItem, t.image] }),
-  })
+  }),
 );
 
 export const interaction = sqliteTable("interaction", {
