@@ -33,10 +33,19 @@ const config: Config = {
             "outline-color": "#E67E22",
           },
         },
+        backgroundColor: {
+          "0%, 100%": {
+            "background-color": "#D35400",
+          },
+          "50%": {
+            "background-color": "#E67E22",
+          },
+        },
       },
       animation: {
         wiggle: "wiggle .5s ease-in-out infinite",
         outline: "outline .5s ease-in-out infinite",
+        backgroundColor: "backgroundColor .5s ease-in-out infinite",
       },
       boxShadow: {
         standard: `2px 4px 4px 0px rgba(0,0,0,0.25)`,
