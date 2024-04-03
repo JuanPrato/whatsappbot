@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export default function AuthHeader({ route }: { route: string }) {
   return (
-    <header className="absolute left-0 top-0 flex h-screen w-28 flex-col items-center bg-light p-3 shadow-standard">
+    <header className="fixed left-0 top-0 flex h-screen w-28 flex-col items-center bg-light p-3 shadow-standard">
       <div className="w-24 border-b border-text border-opacity-30 pb-3">
         <img src="/LOGO.png" alt="logo" />
       </div>
