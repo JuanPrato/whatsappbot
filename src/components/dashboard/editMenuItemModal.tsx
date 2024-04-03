@@ -17,9 +17,15 @@ interface Props {
   item?: Command;
   label?: string;
   openButtonColor?: string;
+  phone: string;
 }
 
-export function EditMenuItemModal({ item, label, openButtonColor }: Props) {
+export function EditMenuItemModal({
+  item,
+  label,
+  openButtonColor,
+  phone,
+}: Props) {
   const [open, setOpen] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
   const [state, formAction] = useFormState(updateMenuItem, null);
@@ -69,6 +75,7 @@ export function EditMenuItemModal({ item, label, openButtonColor }: Props) {
             errorClassName="text-dark"
           />
           <HiddenInput value={item?.id} name="id" />
+          <HiddenInput value={phone} name="phone" />
           <ButtonInput
             label="Guardar"
             type="submit"

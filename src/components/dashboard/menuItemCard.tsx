@@ -4,9 +4,10 @@ import { EditMenuItemModal } from "./editMenuItemModal";
 
 interface Props {
   item: Command;
+  phone: string;
 }
 
-export default function MenuItemCard({ item }: Props) {
+export default function MenuItemCard({ item, phone }: Props) {
   return (
     <div key={item.id} className="flex flex-col rounded-lg bg-dark p-5">
       <header>
@@ -19,7 +20,7 @@ export default function MenuItemCard({ item }: Props) {
         </p>
       </div>
       <footer className="flex justify-between py-1">
-        <EditMenuItemModal item={item} />
+        <EditMenuItemModal item={item} phone={phone} />
         <ButtonInput
           label="Eliminar"
           inputClassName="min-w-[200px] bg-red-500 text-light"

@@ -26,7 +26,7 @@ export default async function DashBoardPage() {
           <UserStatistics />
         </div>
       </section>
-      <UserMenu items={bot.menuItems} />
+      <UserMenu items={bot.menuItems} phone={bot.phone} />
     </div>
   );
 }

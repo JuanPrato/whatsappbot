@@ -4,6 +4,7 @@ import { EditMenuItemModal } from "./editMenuItemModal";
 
 interface Props {
   items: Command[];
+  phone: string;
 }
 
 export default function UserMenu(props: Props) {
@@ -14,11 +15,12 @@ export default function UserMenu(props: Props) {
         <EditMenuItemModal
           label="Agregar nuevo item"
           openButtonColor="bg-primary"
+          phone={props.phone}
         />
       </header>
       <div className="grid h-full grow grid-cols-2 gap-16">
         {props.items.map((item) => (
-          <MenuItemCard item={item} key={item.id} />
+          <MenuItemCard item={item} key={item.id} phone={props.phone} />
         ))}
       </div>
     </section>
