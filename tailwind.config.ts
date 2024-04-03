@@ -35,10 +35,10 @@ const config: Config = {
         },
         backgroundColor: {
           "0%, 100%": {
-            "background-color": "#D35400",
+            "background-color": "rgba(211, 84, 0, .1)",
           },
           "50%": {
-            "background-color": "#E67E22",
+            "background-color": "rgba(230, 126, 34, .1)",
           },
         },
       },
