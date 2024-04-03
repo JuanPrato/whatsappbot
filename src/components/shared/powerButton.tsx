@@ -15,7 +15,7 @@ export function PowerButton() {
       <FaPowerOff
         className={twMerge(
           "h-full w-full shadow-primary-dark",
-          isActive ? "drop-shadow-button text-primary" : "text-black",
+          isActive ? "text-primary drop-shadow-button" : "text-black",
         )}
       />
     </button>
