@@ -1,4 +1,5 @@
 import { getSession } from "@/common/auth/lib";
+import { Bot } from "@/models";
 import { createUploadthing, type FileRouter } from "uploadthing/next";
 import { UploadThingError } from "uploadthing/server";
 
@@ -21,16 +22,14 @@ export const ourFileRouter = {
       if (!session) throw new UploadThingError("Unauthorized");
 
       // Whatever is returned here is accessible in onUploadComplete as `metadata`
-      return { userId: session.user.email };
+      return { userId: session.user.email, phone: session.user.phone };
     })
     .onUploadComplete(async ({ metadata, file }) => {
-      // This code RUNS ON YOUR SERVER after upload
-      console.log("Upload complete for userId:", metadata.userId);
+      const bot = await Bot.getBot(metadata.phone);
 
-      console.log("file url", file.url);
+      await bot?.addImage(file.url, file.name);
 
-      // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
-      return { uploadedBy: metadata.userId };
+      return { success: true };
     }),
 } satisfies FileRouter;
 
