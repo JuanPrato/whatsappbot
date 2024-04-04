@@ -1,6 +1,7 @@
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
+import { Session, User } from "../types";
 
 const secretKey = process.env.SECRET_KEY;
 const key = new TextEncoder().encode(secretKey);
@@ -13,17 +14,17 @@ export async function encrypt(payload: any) {
     .sign(key);
 }
 
-export async function decrypt(input: string): Promise<any> {
+export async function decrypt(input: string): Promise<Session> {
   const { payload } = await jwtVerify(input, key, {
     algorithms: ["HS256"],
   });
-  return payload;
+  return payload as Session;
 }
 
 export async function login(formData: FormData) {
   // Verify credentials && get the user
 
-  const user = { email: formData.get("email"), name: "John" };
+  const user: User = { email: formData.get("email") as string, name: "John" };
 
   // Create the session
   const expires = new Date(Date.now() + 10 * 1000);
