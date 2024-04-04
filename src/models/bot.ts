@@ -59,6 +59,14 @@ export class Bot {
     );
   }
 
+  async addImage(url: string, name: string) {
+    await db.insert(image).values({
+      phone: this.phone,
+      name,
+      url,
+    });
+  }
+
   static async getBot(phone: string): Promise<Bot | null> {
     const dbUser = await db.query.user.findFirst({
       where: eq(userTable.phone, phone),
