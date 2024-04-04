@@ -22,6 +22,7 @@ export const image = sqliteTable("image", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   url: text("url").notNull(),
   phone: text("phone").notNull(),
+  name: text("name"),
   timestamp: integer("timestamp", { mode: "timestamp" })
     .notNull()
     .default(sql`(strftime('%s', 'now'))`),
