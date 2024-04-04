@@ -1,3 +1,13 @@
+export type Session = {
+  user: User;
+  expires: Date;
+};
+
+export type User = {
+  email: string;
+  name: string;
+};
+
 export interface IncomingMessage {
   SmsMessageSid: string;
   NumMedia: string;
