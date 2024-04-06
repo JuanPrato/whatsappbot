@@ -9,15 +9,13 @@ export function Card({ picture }: Props) {
   return (
     <li
       key={picture.id}
-      className="relative aspect-square h-auto w-[200px] overflow-hidden rounded-lg"
+      className="group flex aspect-square h-auto w-[200px] cursor-pointer flex-col justify-between bg-cover bg-center"
+      style={{ backgroundImage: `url(${picture.url})` }}
     >
-      <FaTrash className="absolute right-2 top-2 z-10 size-[25px] text-danger transition-transform hover:scale-105" />
-      <img
-        src={picture.url}
-        alt={`Imagen subida`}
-        className="mask-image-linear mx-auto max-h-full max-w-full"
-      />
-      <h3 className="absolute bottom-2 left-2 text-light">
+      <div></div>
+      <FaTrash className="mx-auto size-[50px] animate-wiggle text-danger opacity-0 transition-[transform,opacity] hover:scale-105 group-hover:opacity-90" />
+
+      <h3 className="bottom-2 left-2 truncate text-light">
         {picture.description}
       </h3>
     </li>
