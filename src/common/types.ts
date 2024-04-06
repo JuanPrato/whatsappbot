@@ -38,11 +38,12 @@ export interface Command {
   id: number;
   title: string;
   reply: string;
-  images: Image[];
+  files: File[];
 }
 
-export interface Image {
+export interface File {
   id: number;
   description: string;
   url: string;
+  type: string;
 }

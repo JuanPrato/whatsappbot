@@ -5,7 +5,7 @@ import { Bot } from "@/models";
 import dayjs from "dayjs";
 
 export default async function ImagesPage() {
-  const images = await Bot.getBotImagesGroupByDay("+14155238886");
+  const files = await Bot.getBotImagesGroupByDay("+14155238886");
 
   return (
     <div className="ml-[7rem] flex h-full min-h-screen flex-col gap-6 bg-light px-20 py-12">
@@ -15,14 +15,14 @@ export default async function ImagesPage() {
       />
       <section className="w-full grow rounded-lg bg-dark p-5">
         {/* <h3 className="">Tus fotos</h3> */}
-        {images.map((day, index) => (
+        {files.map((day, index) => (
           <div key={index}>
             <h4 className="border-b border-light border-opacity-40 pb-3 text-lg text-light">
               {dayjs(day.date).format("DD-MM-YYYY")}
             </h4>
             <ul className="flex w-full gap-5 py-3">
-              {day.pictures.map((picture) => (
-                <Card picture={picture} key={picture.id} />
+              {day.files.map((file) => (
+                <Card file={file} key={file.id} />
               ))}
             </ul>
           </div>

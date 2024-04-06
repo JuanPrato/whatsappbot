@@ -18,24 +18,25 @@ export const menuItem = sqliteTable("menu_item", {
   reply: text("reply").notNull(),
 });
 
-export const image = sqliteTable("image", {
+export const file = sqliteTable("file", {
   id: integer("id").primaryKey({ autoIncrement: true }),
   url: text("url").notNull(),
   phone: text("phone").notNull(),
   name: text("name"),
+  type: text("type"),
   timestamp: integer("timestamp", { mode: "timestamp" })
     .notNull()
     .default(sql`(strftime('%s', 'now'))`),
 });
 
-export const menuItemImages = sqliteTable(
-  "menu_item_images",
+export const menuItemFiles = sqliteTable(
+  "menu_item_files",
   {
     menuItem: integer("menuItem").notNull(),
-    image: integer("image").notNull(),
+    file: integer("file").notNull(),
   },
   (t) => ({
-    pk: primaryKey({ columns: [t.menuItem, t.image] }),
+    pk: primaryKey({ columns: [t.menuItem, t.file] }),
   }),
 );
 
@@ -54,13 +55,13 @@ export const userRelations = relations(user, ({ many }) => ({
   menuItems: many(menuItem),
 }));
 
-export const menuItemImagesRelations = relations(menuItemImages, ({ one }) => ({
-  image: one(image, {
-    fields: [menuItemImages.image],
-    references: [image.id],
+export const menuItemFilesRelations = relations(menuItemFiles, ({ one }) => ({
+  file: one(file, {
+    fields: [menuItemFiles.file],
+    references: [file.id],
   }),
   menuItem: one(menuItem, {
-    fields: [menuItemImages.menuItem],
+    fields: [menuItemFiles.menuItem],
     references: [menuItem.id],
   }),
 }));
@@ -70,5 +71,5 @@ export const menuItemRelations = relations(menuItem, ({ one, many }) => ({
     fields: [menuItem.phone],
     references: [user.phone],
   }),
-  images: many(menuItemImages),
+  files: many(menuItemFiles),
 }));

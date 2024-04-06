@@ -1,7 +1,7 @@
 import { db } from "@/db";
 import { desc, eq } from "drizzle-orm";
-import { image, user as userTable } from "@/db/schema";
-import { Command, Image } from "@/common/types";
+import { file, user as userTable } from "@/db/schema";
+import { Command, File } from "@/common/types";
 import dayjs from "dayjs";
 
 type DBUser = {
@@ -12,12 +12,13 @@ type DBUser = {
     id: number;
     title: string;
     reply: string;
-    images: {
+    files: {
       menuItem: number;
-      image: number & {
+      file: number & {
         phone: string;
         id: number;
         url: string;
+        name: string | null;
       };
     }[];
   }[];
@@ -34,10 +35,11 @@ export class Bot {
       id: item.id,
       title: item.title,
       reply: item.reply,
-      images: item.images.map((i) => ({
-        id: i.image.id,
-        description: "Imagen",
-        url: i.image.url,
+      files: item.files.map((i) => ({
+        id: i.file.id,
+        description: i.file.name || "Imagen",
+        url: i.file.url,
+        type: "",
       })),
     }));
     this.welcomeMessage = dbUser.welcomeMessage;
@@ -60,7 +62,7 @@ export class Bot {
   }
 
   async addImage(url: string, name: string) {
-    await db.insert(image).values({
+    await db.insert(file).values({
       phone: this.phone,
       name,
       url,
@@ -73,9 +75,9 @@ export class Bot {
       with: {
         menuItems: {
           with: {
-            images: {
+            files: {
               with: {
-                image: true,
+                file: true,
               },
             },
           },
@@ -89,36 +91,38 @@ export class Bot {
   }
 
   static async getBotImagesGroupByDay(phone: string) {
-    const images = await db.query.image.findMany({
-      where: eq(image.phone, phone),
-      orderBy: desc(image.timestamp),
+    const files = await db.query.file.findMany({
+      where: eq(file.phone, phone),
+      orderBy: desc(file.timestamp),
     });
 
-    const result: { date: Date; pictures: Image[] }[] = [];
+    const result: { date: Date; files: File[] }[] = [];
 
-    images.forEach((image) => {
-      const day = dayjs(image.timestamp).startOf("day");
+    files.forEach((file) => {
+      const day = dayjs(file.timestamp).startOf("day");
 
       const res = result.at(-1);
 
       if (!res || res.date.getTime() !== day.toDate().getTime()) {
         result.push({
           date: day.toDate(),
-          pictures: [
+          files: [
             {
-              id: image.id,
-              description: image.name || "default",
-              url: image.url,
+              id: file.id,
+              description: file.name || "default",
+              url: file.url,
+              type: file.type || "unknown",
             },
           ],
         });
         return;
       }
 
-      res.pictures.push({
-        id: image.id,
-        description: image.name || "default",
-        url: image.url,
+      res.files.push({
+        id: file.id,
+        description: file.name || "default",
+        url: file.url,
+        type: file.type || "unknown",
       });
     });
 

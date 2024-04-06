@@ -1,11 +1,11 @@
-import { Image } from "@/common/types";
+import { File } from "@/common/types";
 import { FaTrash } from "react-icons/fa";
 
 interface Props {
-  picture: Image;
+  file: File;
 }
 
-export function Card({ picture }: Props) {
+export function Card({ file: picture }: Props) {
   return (
     <li
       key={picture.id}
