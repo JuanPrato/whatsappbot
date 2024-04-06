@@ -11,7 +11,7 @@ export default async function ImagesPage() {
     <div className="ml-[7rem] flex h-full min-h-screen flex-col gap-6 bg-light px-20 py-12">
       <UserCategoryHeader
         title="Gestiona tus imágenes"
-        icon={() => <UploadImageButton phone="+14155238886" />}
+        icon={UploadImageButton}
       />
       <section className="w-full grow rounded-lg bg-dark p-5">
         {/* <h3 className="">Tus fotos</h3> */}
