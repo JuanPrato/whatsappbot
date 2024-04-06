@@ -107,7 +107,7 @@ export class Bot {
           pictures: [
             {
               id: image.id,
-              description: "Imagen",
+              description: image.name || "default",
               url: image.url,
             },
           ],
@@ -117,7 +117,7 @@ export class Bot {
 
       res.pictures.push({
         id: image.id,
-        description: "Imagen",
+        description: image.name || "default",
         url: image.url,
       });
     });
