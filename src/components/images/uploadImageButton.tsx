@@ -10,11 +10,7 @@ import { generateReactHelpers } from "@uploadthing/react";
 export const { useUploadThing, uploadFiles } =
   generateReactHelpers<OurFileRouter>();
 
-interface Props {
-  phone: string;
-}
-
-export function UploadImageButton(props: Props) {
+export function UploadImageButton() {
   const { isUploading, startUpload } = useUploadThing("imageUploader");
 
   async function onChange(e: ChangeEvent<HTMLInputElement>) {
