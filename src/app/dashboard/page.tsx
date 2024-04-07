@@ -5,8 +5,10 @@ import UserMenu from "@/components/dashboard/menu";
 import { UserCategoryHeader } from "@/components/shared/userCategoryHeader";
 import { Bot } from "@/models";
 
+const phone = "+14155238886";
+
 export default async function DashBoardPage() {
-  const bot = await Bot.getBot("+14155238886");
+  const bot = await Bot.getBot(phone);
 
   if (!bot) return <h1>No tiene bot</h1>;
 

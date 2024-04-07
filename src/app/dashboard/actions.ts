@@ -1,7 +1,7 @@
 "use server";
 
 import { db } from "@/db";
-import { menuItem, user } from "@/db/schema";
+import { menuItem, menuItemFiles, user } from "@/db/schema";
 import { eq } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 
@@ -24,10 +24,11 @@ export async function updateWelcomeMessage(_: any, formData: FormData) {
 }
 
 export async function updateMenuItem(_: any, formData: FormData) {
-  const id = Number(formData.get("id")) as number | undefined;
+  let id = Number(formData.get("id")) as number | undefined;
   const title = formData.get("title") as string | null;
   const reply = formData.get("reply") as string | null;
   const phone = formData.get("phone") as string;
+  const files = (formData.get("files") as string).split(",");
 
   if (!title) {
     return {
@@ -50,7 +51,19 @@ export async function updateMenuItem(_: any, formData: FormData) {
   if (id) {
     await db.update(menuItem).set({ title, reply }).where(eq(menuItem.id, id));
   } else {
-    await db.insert(menuItem).values({ title, reply, phone });
+    const [{ id: newId }] = await db
+      .insert(menuItem)
+      .values({ title, reply, phone })
+      .returning({ id: menuItem.id });
+
+    id = newId;
+  }
+
+  for (const file of files) {
+    await db
+      .insert(menuItemFiles)
+      .values({ file: Number(file), menuItem: id })
+      .onConflictDoNothing();
   }
 
   revalidatePath("/dashboard");

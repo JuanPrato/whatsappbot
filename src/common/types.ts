@@ -47,3 +47,8 @@ export interface File {
   url: string;
   type: string;
 }
+
+export interface FileOption {
+  id: number;
+  name: string | null;
+}

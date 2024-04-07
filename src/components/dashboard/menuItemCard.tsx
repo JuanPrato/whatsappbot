@@ -1,13 +1,14 @@
-import { Command } from "@/common/types";
+import { Command, FileOption } from "@/common/types";
 import { ButtonInput } from "../shared/input";
 import { EditMenuItemModal } from "./editMenuItemModal";
 
 interface Props {
   item: Command;
   phone: string;
+  files: FileOption[];
 }
 
-export default function MenuItemCard({ item, phone }: Props) {
+export default function MenuItemCard({ item, phone, files }: Props) {
   return (
     <div key={item.id} className="flex flex-col rounded-lg bg-dark p-5">
       <header>
@@ -20,7 +21,7 @@ export default function MenuItemCard({ item, phone }: Props) {
         </p>
       </div>
       <footer className="flex justify-between py-1">
-        <EditMenuItemModal item={item} phone={phone} />
+        <EditMenuItemModal item={item} phone={phone} files={files} />
         <ButtonInput
           label="Eliminar"
           inputClassName="min-w-[200px] bg-red-500 text-light"

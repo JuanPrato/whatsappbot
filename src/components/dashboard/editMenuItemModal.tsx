@@ -8,16 +8,18 @@ import {
   HiddenInput,
 } from "../shared/input";
 import Modal from "../shared/modal";
-import { Command } from "@/common/types";
-import { useFormState, useFormStatus } from "react-dom";
+import { Command, FileOption } from "@/common/types";
+import { useFormState } from "react-dom";
 import { updateMenuItem } from "@/app/dashboard/actions";
 import { twMerge } from "tailwind-merge";
+import { SelectInput } from "../shared/input.client";
 
 interface Props {
   item?: Command;
   label?: string;
   openButtonColor?: string;
   phone: string;
+  files: FileOption[];
 }
 
 export function EditMenuItemModal({
@@ -25,6 +27,7 @@ export function EditMenuItemModal({
   label,
   openButtonColor,
   phone,
+  files,
 }: Props) {
   const [open, setOpen] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
@@ -52,7 +55,7 @@ export function EditMenuItemModal({
       >
         <form
           action={formAction}
-          className="min-w-[350px] overflow-hidden rounded-lg bg-light p-5"
+          className="w-[400px] overflow-hidden rounded-lg bg-light p-5"
           ref={formRef}
         >
           <TextInput
@@ -64,7 +67,19 @@ export function EditMenuItemModal({
             name="title"
             errorClassName="text-dark"
           />
-          <div className="h-[150px] border-b border-dark border-opacity-30"></div>
+          <div className="my-2 border-b border-dark border-opacity-30">
+            <h3>Tus archivos</h3>
+            <SelectInput
+              options={files.map((f) => ({
+                text: f.name || "",
+                value: `${f.id}`,
+              }))}
+              selectedOptions={
+                item?.files.map((file) => file.id.toString()) || []
+              }
+              name="files"
+            />
+          </div>
           <TextAreaInput
             label="Respuesta"
             inputClassName="min-h-[150px]"
