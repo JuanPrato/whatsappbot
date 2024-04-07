@@ -5,15 +5,15 @@ import { UTApi } from "uploadthing/server";
 
 const utapi = new UTApi();
 
-export async function deleteImage(formData: FormData) {
+export async function deleteFile(formData: FormData) {
   try {
-    const imageUrl = formData.get("image") as string | null;
+    const fileUrl = formData.get("file") as string | null;
 
-    if (!imageUrl) {
+    if (!fileUrl) {
       throw new Error("Invalid image url");
     }
 
-    await utapi.deleteFiles(imageUrl);
+    await utapi.deleteFiles(fileUrl);
   } catch (e) {
     console.log(e);
     return {
