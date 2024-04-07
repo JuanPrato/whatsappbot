@@ -24,6 +24,7 @@ export const file = sqliteTable("file", {
   phone: text("phone").notNull(),
   name: text("name"),
   type: text("type"),
+  key: text("key").notNull(),
   timestamp: integer("timestamp", { mode: "timestamp" })
     .notNull()
     .default(sql`(strftime('%s', 'now'))`),
