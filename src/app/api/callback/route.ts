@@ -39,7 +39,7 @@ export async function POST(request: Request) {
 
   message.setBody(command.reply || "No hay respuesta para este comando");
 
-  command.images.forEach((image) => message.setMedia(image.url));
+  command.files.forEach((file) => message.setMedia(file.url));
 
   return new Response(message.getResponse(), {
     headers: {
