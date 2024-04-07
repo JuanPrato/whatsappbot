@@ -1,8 +1,8 @@
-import { IconType } from "react-icons";
+import { ReactNode } from "react";
 
 interface Props {
   title: string;
-  icon?: IconType;
+  icon?: ReactNode;
   phone?: string;
 }
 
@@ -15,7 +15,7 @@ export function UserCategoryHeader(props: Props) {
           {props.phone && `(${props.phone})`}
         </span>
       </h1>
-      {props.icon && <props.icon />}
+      {props.icon && props.icon}
     </header>
   );
 }

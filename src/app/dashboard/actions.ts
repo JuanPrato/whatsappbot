@@ -72,3 +72,10 @@ export async function updateMenuItem(_: any, formData: FormData) {
     success: true,
   };
 }
+
+export async function toggleBot(phone: string, newState: boolean) {
+  await db.update(user).set({ isOn: newState }).where(eq(user.phone, phone));
+  return {
+    success: true,
+  };
+}

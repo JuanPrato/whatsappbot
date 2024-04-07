@@ -1,5 +1,5 @@
 import { db } from "@/db";
-import { desc, eq } from "drizzle-orm";
+import { and, desc, eq } from "drizzle-orm";
 import { file, user as userTable } from "@/db/schema";
 import { Command, File } from "@/common/types";
 import dayjs from "dayjs";
@@ -7,6 +7,7 @@ import dayjs from "dayjs";
 type DBUser = {
   phone: string;
   welcomeMessage: string | null;
+  isOn: boolean;
   menuItems: {
     phone: string;
     id: number;
@@ -28,9 +29,11 @@ export class Bot {
   phone: string;
   menuItems: Command[];
   welcomeMessage: string | null;
+  isOn: boolean;
 
   constructor(dbUser: DBUser) {
     this.phone = dbUser.phone;
+    this.isOn = dbUser.isOn;
     this.menuItems = dbUser.menuItems.map((item) => ({
       id: item.id,
       title: item.title,
@@ -73,7 +76,7 @@ export class Bot {
 
   static async getBot(phone: string): Promise<Bot | null> {
     const dbUser = await db.query.user.findFirst({
-      where: eq(userTable.phone, phone),
+      where: and(eq(userTable.phone, phone), eq(userTable.isOn, true)),
       with: {
         menuItems: {
           with: {

@@ -16,7 +16,7 @@ export default async function DashBoardPage() {
     <div className="ml-[7rem] flex h-full min-h-screen flex-col gap-6 bg-light px-20 py-12">
       <UserCategoryHeader
         title="Información y gestión de tu bot"
-        icon={PowerButton}
+        icon={<PowerButton phone={phone} defaultState={bot.isOn} />}
         phone={bot.phone}
       />
       <section>
