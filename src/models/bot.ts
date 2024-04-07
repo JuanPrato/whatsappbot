@@ -61,11 +61,13 @@ export class Bot {
     );
   }
 
-  async addImage(url: string, name: string) {
+  async addImage(url: string, name: string, key: string, type: string) {
     await db.insert(file).values({
       phone: this.phone,
       name,
       url,
+      key,
+      type,
     });
   }
 
