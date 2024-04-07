@@ -20,10 +20,11 @@ export function PowerButton({ phone, defaultState }: Props) {
       className={"h-16 w-16 rounded-full bg-text p-2 active:scale-95"}
       onClick={async () => {
         setIsLoading(true);
-        const { success } = await toggleBot(phone, !isActive);
+        const { success } = await toggleBot(phone);
         if (success) setIsActive(!isActive);
         setIsLoading(false);
       }}
+      disabled={isLoading}
     >
       {isLoading ? (
         <Loading />

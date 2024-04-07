@@ -12,7 +12,7 @@ export async function POST(request: Request) {
 
   const bot = await Bot.getBot(userPhone);
 
-  if (!bot) {
+  if (!bot || !bot.isOn) {
     return new Response(message.getResponse(), {
       headers: {
         "Content-Type": "text/xml",

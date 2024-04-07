@@ -76,7 +76,7 @@ export class Bot {
 
   static async getBot(phone: string): Promise<Bot | null> {
     const dbUser = await db.query.user.findFirst({
-      where: and(eq(userTable.phone, phone), eq(userTable.isOn, true)),
+      where: eq(userTable.phone, phone),
       with: {
         menuItems: {
           with: {

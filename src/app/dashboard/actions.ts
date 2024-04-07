@@ -2,7 +2,7 @@
 
 import { db } from "@/db";
 import { menuItem, menuItemFiles, user } from "@/db/schema";
-import { eq } from "drizzle-orm";
+import { eq, not } from "drizzle-orm";
 import { revalidatePath } from "next/cache";
 
 export async function updateWelcomeMessage(_: any, formData: FormData) {
@@ -73,8 +73,11 @@ export async function updateMenuItem(_: any, formData: FormData) {
   };
 }
 
-export async function toggleBot(phone: string, newState: boolean) {
-  await db.update(user).set({ isOn: newState }).where(eq(user.phone, phone));
+export async function toggleBot(phone: string) {
+  await db
+    .update(user)
+    .set({ isOn: not(user.isOn) })
+    .where(eq(user.phone, phone));
   return {
     success: true,
   };
