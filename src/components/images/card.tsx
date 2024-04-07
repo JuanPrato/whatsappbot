@@ -1,7 +1,7 @@
 import { File } from "@/common/types";
 import type { IconType } from "react-icons";
-import { FaTrash } from "react-icons/fa";
 import { FaRegFilePdf } from "react-icons/fa6";
+import { DeleteFileButton } from "./deleteFileButton";
 
 const FileTypes: { [key: string]: IconType } = {
   pdf: FaRegFilePdf,
@@ -33,7 +33,7 @@ export function Card({ file }: Props) {
       </div>
       <div className="absolute left-0 top-0 flex size-[200px] flex-col">
         <div className="flex grow items-center justify-center">
-          <FaTrash className="mx-auto size-[50px] animate-wiggle text-danger opacity-0 transition-[transform,opacity] hover:scale-105 group-hover:opacity-90" />
+          <DeleteFileButton file={file} />
         </div>
         <h3 className="bottom-2 left-2 truncate text-light">
           {file.description}
