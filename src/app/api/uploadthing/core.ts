@@ -30,7 +30,7 @@ export const ourFileRouter = {
     .onUploadComplete(async ({ metadata, file }) => {
       const bot = await Bot.getBot(metadata.phone);
 
-      await bot?.addImage(file.url, file.name);
+      await bot?.addImage(file.url, file.name, file.key, file.type);
 
       return { success: true };
     }),
