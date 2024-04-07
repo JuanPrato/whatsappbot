@@ -9,6 +9,7 @@ import {
 export const user = sqliteTable("user", {
   phone: text("phone").notNull().primaryKey(),
   welcomeMessage: text("welcomeMessage"),
+  isOn: integer("is_on", { mode: "boolean" }).default(false).notNull(),
 });
 
 export const menuItem = sqliteTable("menu_item", {
