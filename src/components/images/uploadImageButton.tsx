@@ -6,17 +6,20 @@ import { Loading } from "../shared/loading";
 import { twMerge } from "tailwind-merge";
 import { OurFileRouter } from "@/app/api/uploadthing/core";
 import { generateReactHelpers } from "@uploadthing/react";
+import { useRouter } from "next/navigation";
 
 export const { useUploadThing, uploadFiles } =
   generateReactHelpers<OurFileRouter>();
 
 export function UploadImageButton() {
   const { isUploading, startUpload } = useUploadThing("imageUploader");
+  const router = useRouter();
 
   async function onChange(e: ChangeEvent<HTMLInputElement>) {
     try {
       const file = e.target.files?.item(0)!;
       await startUpload([file]);
+      router.refresh();
     } catch (e) {
       console.error(e);
     }
