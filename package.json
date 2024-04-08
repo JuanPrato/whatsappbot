@@ -14,6 +14,7 @@
   "dependencies": {
     "@libsql/client": "^0.6.0",
     "@uploadthing/react": "^6.4.1",
+    "bcrypt": "^5.1.1",
     "dayjs": "^1.11.10",
     "drizzle-orm": "^0.30.6",
     "jose": "^5.2.3",
@@ -26,6 +27,7 @@
     "uploadthing": "^6.7.0"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
