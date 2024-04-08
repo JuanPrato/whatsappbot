@@ -29,7 +29,11 @@ export function EmailInput(props: CommonProps) {
       <label htmlFor="mail" className={labelClassName(props.dark)}>
         {props.label}
       </label>
-      <input type="email" name="mail" className={inputClassName(props.dark)} />
+      <input
+        type="email"
+        name={props.name}
+        className={inputClassName(props.dark)}
+      />
     </div>
   );
 }

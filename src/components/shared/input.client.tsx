@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { Badge } from "./badge";
 import { HiddenInput } from "./input";
+import { twMerge } from "tailwind-merge";
+import { useFormStatus } from "react-dom";
 
 interface Props {
   options: { text: string; value?: string }[];
@@ -54,5 +56,41 @@ export function SelectInput({ options, selectedOptions, name }: Props) {
       </select>
       <HiddenInput name={name} value={value.join(",")} />
     </div>
+  );
+}
+
+interface CommonProps {
+  label?: string;
+  dark?: boolean;
+  placeholder?: string;
+  inputClassName?: string;
+  name?: string;
+  boxClassName?: string;
+  value?: string | number;
+  error?: string;
+  success?: string;
+  errorClassName?: string;
+}
+
+type ButtonProps = CommonProps & {
+  type?: "button" | "submit";
+  onClick?: () => void;
+};
+
+const buttonClassName =
+  "bg-primary text-center p-3 rounded-lg text-text cursor-pointer hover:bg-opacity-80 disabled:opacity-80 disabled:cursor-not-allowed";
+
+export function ButtonInputWithPending(props: ButtonProps) {
+  const { pending } = useFormStatus();
+
+  return (
+    <input
+      type={props.type || "button"}
+      name="button"
+      className={twMerge(buttonClassName, props.inputClassName)}
+      value={props.label}
+      onClick={props.onClick}
+      disabled={pending}
+    />
   );
 }
