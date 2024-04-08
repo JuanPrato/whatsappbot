@@ -1,3 +1,4 @@
+import { register } from "@/common/user/actions";
 import {
   ButtonInput,
   EmailInput,
@@ -5,6 +6,7 @@ import {
   PhoneInput,
   TextInput,
 } from "@/components/shared/input";
+import { ButtonInputWithPending } from "@/components/shared/input.client";
 
 export default function RegisterPage() {
   return (
@@ -20,14 +22,17 @@ export default function RegisterPage() {
         <h2 className="max-w-[500px] text-3xl font-medium text-text">
           Crea tu cuenta y comienza a automatizar
         </h2>
-        <form className="flex w-full max-w-[500px] flex-col gap-5">
-          <TextInput label="Nombre completo" />
-          <EmailInput label="Email" />
+        <form
+          action={register}
+          className="flex w-full max-w-[500px] flex-col gap-5"
+        >
+          <TextInput label="Nombre completo" name="name" />
+          <EmailInput label="Email" name="email" />
           <div className="flex w-full gap-5">
-            <PasswordInput label="Contraseña" />
-            <PhoneInput label="Teléfono" />
+            <PasswordInput label="Contraseña" name="password" />
+            <PhoneInput label="Teléfono" name="phone" />
           </div>
-          <ButtonInput label="Registrarme" type="submit" />
+          <ButtonInputWithPending label="Registrarme" type="submit" />
         </form>
       </div>
     </section>
