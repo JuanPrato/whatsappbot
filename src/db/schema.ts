@@ -10,6 +10,10 @@ export const user = sqliteTable("user", {
   phone: text("phone").notNull().primaryKey(),
   welcomeMessage: text("welcomeMessage"),
   isOn: integer("is_on", { mode: "boolean" }).default(false).notNull(),
+  name: text("name"),
+  email: text("email").unique().notNull(),
+  password: text("password"),
+  userPhone: text("user_phone"),
 });
 
 export const menuItem = sqliteTable("menu_item", {
