@@ -2,6 +2,10 @@ import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
 import { Session, User } from "../types";
+//import { db } from "@/db";
+import { eq } from "drizzle-orm";
+import { user as userTable } from "@/db/schema";
+import { redirect } from "next/navigation";
 
 const secretKey = process.env.SECRET_KEY;
 const key = new TextEncoder().encode(secretKey);
@@ -21,15 +25,7 @@ export async function decrypt(input: string): Promise<Session> {
   return payload as Session;
 }
 
-export async function login(formData: FormData) {
-  // Verify credentials && get the user
-
-  const user: User = {
-    email: formData.get("email") as string,
-    name: "John",
-    phone: "+14155238886",
-  };
-
+export async function login(user: User) {
   // Create the session
   const expires = new Date(Date.now() + 10 * 1000);
   const session = await encrypt({ user, expires });

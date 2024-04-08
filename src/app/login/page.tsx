@@ -1,18 +1,11 @@
-import { login } from "@/common/auth/lib";
+import { login } from "@/common/auth/actions";
 import {
   ButtonInput,
   EmailInput,
   PasswordInput,
 } from "@/components/shared/input";
-import { redirect } from "next/navigation";
 
 export default function LoginPage() {
-  async function onSubmit(formData: FormData) {
-    "use server";
-    await login(formData);
-    redirect("/dashboard");
-  }
-
   return (
     <section className="flex h-[calc(100vh-7rem)] w-full items-center bg-text px-[15%]">
       <div className="flex w-full justify-center">
@@ -20,9 +13,9 @@ export default function LoginPage() {
           <h2 className="text-3xl font-medium text-text">
             Ingresa para gestionar tu bot
           </h2>
-          <form className="flex w-full flex-col gap-5" action={onSubmit}>
-            <EmailInput label="Email" />
-            <PasswordInput label="Contraseña" />
+          <form className="flex w-full flex-col gap-5" action={login}>
+            <EmailInput label="Email" name="email" />
+            <PasswordInput label="Contraseña" name="password" />
             <ButtonInput label="Ingresar" type="submit" />
           </form>
         </div>

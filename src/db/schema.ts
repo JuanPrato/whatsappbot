@@ -12,7 +12,7 @@ export const user = sqliteTable("user", {
   isOn: integer("is_on", { mode: "boolean" }).default(false).notNull(),
   name: text("name"),
   email: text("email").unique().notNull(),
-  password: text("password"),
+  password: text("password").notNull(),
   userPhone: text("user_phone"),
 });
 
