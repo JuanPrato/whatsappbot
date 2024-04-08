@@ -4,10 +4,14 @@ import WelcomeMessage from "@/components/dashboard/welcomeMessage";
 import UserMenu from "@/components/dashboard/menu";
 import { UserCategoryHeader } from "@/components/shared/userCategoryHeader";
 import { Bot } from "@/models";
-
-const phone = "+14155238886";
+import { getSession } from "@/common/auth/lib";
 
 export default async function DashBoardPage() {
+  const session = await getSession();
+
+  if (!session) return <h1>Inicia sesión</h1>;
+
+  const phone = session.user.phone;
   const bot = await Bot.getBot(phone);
 
   if (!bot) return <h1>No tiene bot</h1>;
